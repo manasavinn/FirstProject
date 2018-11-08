@@ -8,6 +8,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class IndexController {
   @RequestMapping("/index")
   public ModelAndView index() {
-	  return new ModelAndView("input");
+	  return new ModelAndView("index");
   }
 }
