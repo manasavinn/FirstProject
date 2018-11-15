@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pragmaedge.training.FirstProject.Models.User;
+import com.pragmaedge.training.FirstProject.exception.BadRequestException;
+import com.pragmaedge.training.FirstProject.exception.DataNotFoundException;
 import com.pragmaedge.training.FirstProject.services.FirstService;
 
 import java.util.List;
@@ -37,7 +39,10 @@ public class FirstController {
     }
     @GetMapping(path="/users/{username}")
     public User getUser(@PathVariable String username) {
-    	return firstService.getUser(username);
+    	if(username.equals(""))
+    		throw new DataNotFoundException("username is null");
+    	else
+    	  return firstService.getUser(username);
     }
     @GetMapping(path="/registration")
     public ModelAndView addUser() {
@@ -45,8 +50,13 @@ public class FirstController {
     }
 	@PostMapping(path="/adduser")
     public ModelAndView addUser(@ModelAttribute User user) {
+		if(user.getUsername().equals("")||user.getPassword().equals(""))
+			throw new BadRequestException("username / password is null");
+		else
+		{
     	firstService.postUser(user);
     	return new ModelAndView("search");
+		}
     }
 	@GetMapping(path="/searchUser")
     public ModelAndView searchUser() {
@@ -54,19 +64,31 @@ public class FirstController {
     }
 	@PostMapping(path="/searchUser")
     public User searchUser(@FormParam("username") String username) {
-		return firstService.getUser(username);
+		if(username.equals(""))
+    		throw new BadRequestException("username is null");
+		else
+		  return firstService.getUser(username);
     }
 	@PostMapping(path="/updateUser")
-    public User searchUser(@FormParam("username") String username,@FormParam("password") String password) {
-		User user=new User();
+    public User searchUser(@FormParam("username") String username,@FormParam("password") String password)
+	{
+		if(username.equals("")||password.equals(""))
+			throw new BadRequestException("username /password is null");
+		else {
+		 User user=new User();
 		 user.setUsername(username);
 		 user.setPassword(password);
 	     return firstService.updatUser(user);
+		}
     }
 	@PutMapping(path="/users/{username}")
     public void updateUser(@RequestBody User user,@PathVariable String username) {
+		if(username.equals("")||user==null)
+    		throw new DataNotFoundException("username / user is null");
+		else {
 		user.setUsername(username);
     	firstService.updateUser(user);
+		}
     }
 	@DeleteMapping(path="/users/{username}")
     public void deleteUser(@PathVariable String username) {

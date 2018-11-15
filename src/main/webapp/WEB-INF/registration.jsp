@@ -31,9 +31,9 @@ $(document).ready(function(){
 <div style="background-image:url('images/demo/backgrounds/01.jpg');">
   <div id="pageintro" class="hoc clear"> 
 <form:form action="/adduser" method="post" modelAttribute="user">
-<font color="black">Username:<form:input id="loginuser" type="text" path="username"/><br/>
-Password:<form:input id="pwd" type="password" path="password"/><br/>
-Confirm Password:<input id="cfrm" type="password" /><br/></font>
+<font color="black">Username:<form:input id="loginuser" type="text" path="username" required="required"/><br/>
+Password:<form:input id="pwd" type="password" path="password" required="required"/><br/>
+Confirm Password:<input id="cfrm" type="password" required="required"/><br/></font>
 <input class="btn" type="submit"/>
 </form:form>
    <!-- ################################################################################################ -->

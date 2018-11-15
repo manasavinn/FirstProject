@@ -3,9 +3,11 @@ package com.pragmaedge.training.FirstProject.dao;
 
 import java.util.List;
 
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+
 import org.springframework.stereotype.Repository;
 import com.pragmaedge.training.FirstProject.Models.User;
 import org.hibernate.cfg.Configuration;
@@ -16,6 +18,12 @@ import org.hibernate.query.Query;
 public class FirstDataAccess {
 	
 	SessionFactory sessionFactory = new Configuration().configure( ).buildSessionFactory();
+	/*Configuration configObj = new Configuration().configure();
+	        // Since Hibernate Version 4.x, ServiceRegistry Is Being Used
+	        ServiceRegistry serviceRegistryObj = new StandardServiceRegistryBuilder().applySettings(configObj.getProperties()).build(); 
+	        // Creating Hibernate SessionFactory Instance
+	        sessionFactoryObj = configObj.buildSessionFactory(serviceRegistryObj);*/
+
 	Session session = null;
 	public User checkUser(String username,String password) {
 	//public static void main(String args[])	

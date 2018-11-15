@@ -1,41 +1,66 @@
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="form"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
- <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
 <style>
+
 .btn {background-color: #008CBA;}
 .butn {background-color: #f44336;}
+ul.b {list-style-type: square;}
 </style>
 </head>
 <body>
 <div class="container">
-Manage User
+<h3>Manage User</h3>
+</div>
+<br/>
+<div class="container">
+<ul class="a">
+<li><h5>${users.size()} Matches Found</h5></li> 
+</ul>
 </div>
 <div class="container">
-<form action="/postuser" method="post">
+<form action="/searchUsers" method="post">
 <table>
-
 <tr>
-<td>User Id:</td><td><input id="userid" type="text"/></td>
+<td>User Id:</td><td><input id="userid"  name="userid" type="text"/></td>
 <td>Role:</td>
-<td><select>
+<td><select name="role">
   <option value="Admin">Admin</option>
 </select></td></tr>
 <tr>
-<td>First Name:</td><td><input id="firstname" type="text"/></td>
-<td>Last Name:</td><td><input id="lastname" type="text"/></td>
+<td>First Name:</td><td><input id="firstname" name="firstname" type="text"/></td>
+<td>Last Name:</td><td><input id="lastname" name="lastname" type="text"/></td>
 <td>Status:</td>
-<td><select>
-  <option value="Active">Active</option>
+<td><select name="value" id="value">
+  <option  value="Active">Active</option>
 </select></td></tr>
 <tr>
 <td>
-<input class="btn" type="submit" value="Search"/></td>
+<font color="red">Use WildCard * for better result</font>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+<input id="click" class="btn" type="submit" value="Search"/></td>
 <td>
 <input class="butn" type="reset" value="Cancel"/></td></tr>
 
@@ -43,7 +68,10 @@ Manage User
 </form><br/>
 </div>
 <div class="container">
-<table class="table table-hover">
+Filter:&nbsp;&nbsp;<input id="myInput" type="text" placeholder="Type to Filter..."/>
+</div>
+<div class="container">
+<table class="table table-striped">
 <thead>
 <tr>
 <th>Actions</th>
@@ -54,16 +82,18 @@ Manage User
 <th>Status</th>
 </tr>
 </thead>
-<form:forEach var="user" items="${users}">
+<tbody id="myTable">
+<c:forEach var="user" items="${users}" varStatus="loop">
 <tr>
-<td>1</td>
-<td>${user.userId}</td>
-<td>${user.firstName}</td>
-<td>${user.lastName}</td>
-<td>${user.role}</td>
-<td>${user.status}</td>
+<td><span class="glyphicon glyphicon-align-justify"></span></td>
+<td>${user[0]}</td>
+<td>${user[2]}</td>
+<td>${user[3]}</td>
+<td>${user[7]}</td>
+<td>${user[8]}</td>
 </tr>
-</form:forEach>
+</c:forEach>
+</tbody>
 </table>
 </div>
 </body>
