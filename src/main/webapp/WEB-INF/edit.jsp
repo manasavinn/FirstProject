@@ -17,15 +17,15 @@ table, tr, td {
 <body>
 <jsp:include page="layout.jsp" />
 
-<div style="background-image:url('images/demo/backgrounds/01.jpg');">
+<div style="background-image:url('http://localhost:8080/images/demo/backgrounds/01.jpg');">
 <div id="pageintro" class="hoc clear">
  <font color="#000080">
 Create User
 <table>
-<form:form id="form" action="/postuser"  method="post" modelAttribute="user">
+<form:form id="form" action="/updateData"  method="post" modelAttribute="user">
 <tr>
-<td>User Id:<font color="red">*</font></td><td><form:input id="userid" type="text" path="userId" required="required"/></td>
-<td>Password:<font color="red">*</font></td><td><form:input id="password" type="password" path="password" required="required" pattern="^.*(?=.{8,})(?=..*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$" title="Atleast 8 characters, Atleast 1 special character, 1 uppercase, 1 lowercase"/></td>
+<td>User Id:<font color="red">*</font></td><td><form:input id="userid" type="text" path="userId" required="required" disabled="disabled"/></td>
+<td>Password:<font color="red">*</font></td><td><form:input id="password" type="password" path="password" required="required" pattern="^.*(?=.{8,})(?=..*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$" title="Atleast 8 characters, Atleast 1 special character, 1 uppercase, 1 lowercase" disabled="disabled"/></td>
 <td>Role:<font color="red">*</font></td>
 <td><form:select path="role">
   <form:option value="Admin">Admin</form:option>

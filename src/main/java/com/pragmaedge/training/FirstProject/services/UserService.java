@@ -23,4 +23,16 @@ public class UserService {
 	public List<UserData> searchUser(String userid,String role,String firstName,String lastName,String status) throws Exception{
 		return userAccess.searchUsers(userid,role,firstName, lastName, status);
 	}
+	public UserData updateUser(UserData user)throws Exception
+	{
+		return userAccess.updateUser(user);
+	}
+	public UserData getUser(String userId)throws Exception
+	{
+		return userAccess.getUser(userId);
+	}
+	public void deleteUser(String userId)throws Exception
+	{
+		userAccess.deleteUser(userId);
+	}
 }

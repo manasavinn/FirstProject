@@ -5,10 +5,13 @@ import java.util.List;
 import javax.validation.Valid;
 import javax.ws.rs.FormParam;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -41,20 +44,22 @@ public class UserController {
 		
 	}
 	@GetMapping(path="/getAllUsers")
-	public List<UserData> getAllUsers() {
+	public ModelAndView getAllUsers() {
 		 List<UserData> users=null;
+		 ModelAndView model=null;
 		   /*UserData ud=new UserData();
 		   UserData ud1=new UserData();
 		   ud.setUserId("kavya123");
 		   ud1.setUserId("manasa123");*/
 		 
 		   try {
+			  model=new ModelAndView("searchUser");
 			users=service.getUsers();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	     return users;
+	     return model.addObject("users",users);
 	}
 	@PostMapping(path="/searchUsers")
 	public ModelAndView searchUsers(@FormParam("userid") String userid,@FormParam("role") String role,@FormParam("firstname") String firstname,@FormParam("lastname") String lastname,@FormParam("value") String status)
@@ -73,5 +78,47 @@ public class UserController {
 		}
 		return model.addObject("users",users);    
 		
+	}
+	@GetMapping(path="/update/{userId}") 
+	public ModelAndView updateUser(@PathVariable String userId) {
+			UserData user=null;
+			ModelAndView model=null;
+			try {
+			user=service.getUser(userId);
+		    model=new ModelAndView("edit");
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+	        return model.addObject("user", user);
+	}
+	@PostMapping(path="/updateData")
+	public ModelAndView update(@ModelAttribute UserData user) {
+		   UserData u=null;
+		   ModelAndView model=null;
+		   try {
+		 u=service.updateUser(user);
+		 model=new ModelAndView("edit");
+		   }
+		   catch(Exception e) {
+			   e.printStackTrace();
+		   }
+		   return model.addObject("user", u);
+	}
+	@GetMapping(path="/delete/{userId}") 
+	public ModelAndView deleteUser(@PathVariable String userId) {
+			ModelAndView model=null;
+			List<UserData> users=null;
+			try {
+			service.deleteUser(userId);
+		    model=new ModelAndView("searchUser");
+		    users = service.getUsers();
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+	        return model.addObject("users", users);
 	}
 }

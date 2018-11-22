@@ -10,6 +10,8 @@ import org.hibernate.SessionFactory;
 
 import org.springframework.stereotype.Repository;
 import com.pragmaedge.training.FirstProject.Models.User;
+import com.pragmaedge.training.FirstProject.Models.UserData;
+
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
@@ -17,7 +19,9 @@ import org.hibernate.query.Query;
 @Repository
 public class FirstDataAccess {
 	
-	SessionFactory sessionFactory = new Configuration().configure( ).buildSessionFactory();
+	SessionFactory sessionFactory = new Configuration()
+            .addPackage("com.pragmaedge.training.FirstProject.Models")
+            .addAnnotatedClass(UserData.class).configure( ).buildSessionFactory();
 	/*Configuration configObj = new Configuration().configure();
 	        // Since Hibernate Version 4.x, ServiceRegistry Is Being Used
 	        ServiceRegistry serviceRegistryObj = new StandardServiceRegistryBuilder().applySettings(configObj.getProperties()).build(); 

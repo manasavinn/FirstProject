@@ -14,7 +14,7 @@ Licence URI: http://www.os-templates.com/template-terms
 <title>Bistup</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+<link href="http://localhost:8084/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
 </head>
 <body id="top">
 <!-- ################################################################################################ -->
@@ -32,7 +32,7 @@ Licence URI: http://www.os-templates.com/template-terms
     </div>
     <div class="fl_right">
       <ul class="nospace">
-        <li><i class="fas fa-phone rgtspace-5"></i> +00 (123) 456 7890</li>
+        <li><i class="fas fa-phone rgtspace-5"></i> +1(815) 333 4038</li>
         <li><i class="fas fa-envelope rgtspace-5"></i> info@domain.com</li>
       </ul>
     </div>
@@ -46,11 +46,10 @@ Licence URI: http://www.os-templates.com/template-terms
   <header id="header" class="hoc clear"> 
     <!-- ################################################################################################ -->
     <div id="logo" class="one_quarter first">
-      <h1><a href="index.html">Bistup</a></h1>
-      <p>Vestibulum amet</p>
+      <h1><a href="index.html">PragmaEdge</a></h1>
     </div>
-    <div class="one_quarter"><strong><i class="fas fa-phone rgtspace-5"></i> Call Us:</strong> +00 (123) 456 7890</div>
-    <div class="one_quarter"><strong><i class="far fa-clock rgtspace-5"></i> Mon. - Sat.:</strong> 08.00am - 18.00pm</div>
+    <div class="one_quarter"><strong><i class="fas fa-phone rgtspace-5"></i> Call Us:</strong> +1(815) 333 4038</div>
+    <div class="one_quarter"><strong><i class="far fa-clock rgtspace-5"></i> Mon. - Fri.:</strong> 08.00am - 5.00pm</div>
     <div class="one_quarter">
       <form action="#" method="post">
         <label>
@@ -76,8 +75,8 @@ Licence URI: http://www.os-templates.com/template-terms
     <ul class="clear">
       <li class="active"><a href="/index">Home</a></li>
       <li><a href="/login">Login</a></li>
-      <li><a href="/registration">Register</a></li>
-      <li><a id="a" href="/users">Users</a></li>
+      <li><a href="/getUser">Register</a></li>
+      <li><a id="a" href="/getAllUsers">Users</a></li>
       <li><a href="/index.html">Long Link Text</a></li>
     </ul>
     <!-- ################################################################################################ -->
@@ -87,8 +86,8 @@ Licence URI: http://www.os-templates.com/template-terms
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
 <!-- JAVASCRIPTS -->
-<script src="layout/scripts/jquery.min.js"></script>
-<script src="layout/scripts/jquery.backtotop.js"></script>
-<script src="layout/scripts/jquery.mobilemenu.js"></script>
+<script src="http://localhost:8084/layout/scripts/jquery.min.js"></script>
+<script src="http://localhost:8084/layout/scripts/jquery.backtotop.js"></script>
+<script src="http://localhost:8084/layout/scripts/jquery.mobilemenu.js"></script>
 </body>
 </html>

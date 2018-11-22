@@ -16,7 +16,9 @@ public class UserData {
   @NotNull
   @Size(min=6,message="username should contain 6 characters")
   private String userId;
+  @Column(name="password")
   private String password;
+  @Column(name="role")
   private String role;
   @Column(name="firstname")
   private String firstName;
@@ -27,10 +29,13 @@ public class UserData {
   @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\."
 	        +"[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@"
 	        +"(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?",message="{invalid email}")
+  @Column(name="email")
   private String email;
   @Pattern(regexp="^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$",
           message="{invalid.phonenumber}")
+  @Column(name="phone")
   private String phone;
+  @Column(name="status")
   private String status;
   public UserData()
   {
