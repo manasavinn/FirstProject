@@ -13,11 +13,16 @@ table, tr, td {
     border: none;
 }
 </style>
+<script>
+function cancel(){
+	window.location.replace("http://localhost:8084/getAllUsers");
+}
+</script>
 </head>
 <body>
 <jsp:include page="layout.jsp" />
 
-<div style="background-image:url('http://localhost:8080/images/demo/backgrounds/01.jpg');">
+<div style="background-image:url('http://localhost:8084/images/demo/backgrounds/01.jpg');">
 <div id="pageintro" class="hoc clear">
  <font color="#000080">
 Create User
@@ -45,7 +50,7 @@ Create User
 <tr><td>
 <input id="button" class="btn" type="submit" value="Save User Info"/></td>
 <td>
-<input class="btn" type="reset" value="Cancel"/></td></tr>
+<input class="btn" type="reset" value="Cancel" onClick="cancel()"/></td></tr>
 </form:form>
 </table>
 </font>

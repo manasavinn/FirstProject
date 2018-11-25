@@ -95,16 +95,17 @@ public class UserController {
 	}
 	@PostMapping(path="/updateData")
 	public ModelAndView update(@ModelAttribute UserData user) {
-		   UserData u=null;
+		   List<UserData> users=null;
 		   ModelAndView model=null;
 		   try {
-		 u=service.updateUser(user);
-		 model=new ModelAndView("edit");
+		 service.updateUser(user);
+		 users=service.getUsers();
+		 model=new ModelAndView("searchUser");
 		   }
 		   catch(Exception e) {
 			   e.printStackTrace();
 		   }
-		   return model.addObject("user", u);
+		   return model.addObject("users", users);
 	}
 	@GetMapping(path="/delete/{userId}") 
 	public ModelAndView deleteUser(@PathVariable String userId) {

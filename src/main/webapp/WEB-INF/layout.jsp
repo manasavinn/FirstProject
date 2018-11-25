@@ -77,7 +77,6 @@ Licence URI: http://www.os-templates.com/template-terms
       <li><a href="/login">Login</a></li>
       <li><a href="/getUser">Register</a></li>
       <li><a id="a" href="/getAllUsers">Users</a></li>
-      <li><a href="/index.html">Long Link Text</a></li>
     </ul>
     <!-- ################################################################################################ -->
   </nav>
