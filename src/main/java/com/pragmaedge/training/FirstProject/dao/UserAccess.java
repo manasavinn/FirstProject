@@ -60,7 +60,7 @@ public class UserAccess {
 			q.setString(1, firstName);
 			q.setString(2, lastName);
 			q.setString(3, userid);
-			users = q.list();
+			users = (List<UserData>)q.list();
 
 		} else {
 			Query q = session.createSQLQuery("select * from userdata where role=? or status=?");

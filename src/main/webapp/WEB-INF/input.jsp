@@ -15,7 +15,7 @@ table, tr, td {
 </style>
 </head>
 <body>
-<jsp:include page="layout.jsp" />
+<jsp:include page="loginlayout.jsp" />
 
 <div style="background-image:url('images/demo/backgrounds/01.jpg');">
 <div id="pageintro" class="hoc clear">

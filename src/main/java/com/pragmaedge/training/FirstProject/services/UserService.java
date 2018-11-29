@@ -21,7 +21,10 @@ public class UserService {
 		return userAccess.getUsers();
 	}
 	public List<UserData> searchUser(String userid,String role,String firstName,String lastName,String status) throws Exception{
-		return userAccess.searchUsers(userid,role,firstName, lastName, status);
+		List<UserData> users=userAccess.searchUsers(userid,role,firstName, lastName, status);
+		String name=users.get(0).getFirstName();
+		System.out.println(name);
+		return users;
 	}
 	public UserData updateUser(UserData user)throws Exception
 	{

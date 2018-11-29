@@ -73,8 +73,9 @@ Licence URI: http://www.os-templates.com/template-terms
   <nav id="mainav" class="hoc clear"> 
     <!-- ################################################################################################ -->
     <ul class="clear">
-      <li class="active"><a href="/index">Home</a></li>
-      <li><a href="/login">Login</a></li>
+      <li class="active"><a href="/home">Home</a></li>
+      <li><a href="/getUser">Register</a></li>
+      <li><a id="a" href="/getAllUsers">Users</a></li>
     </ul>
     <!-- ################################################################################################ -->
   </nav>
